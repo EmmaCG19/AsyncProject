@@ -11,15 +11,13 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>URL</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var sitio in Model.WebPages) 
         {
         <tr>
-            <td>@sitio.Nombre</td>
-            <td>@sitio.URL</td>
+            <td><a class="btn-link" href="@sitio.URL">@sitio.Nombre</a></td>
         </tr>
         }
     </tbody>
