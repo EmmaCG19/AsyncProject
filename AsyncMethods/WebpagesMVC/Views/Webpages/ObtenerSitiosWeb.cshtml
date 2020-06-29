@@ -1,0 +1,27 @@
+﻿@model WebpagesMVC.Models.WebPageVM
+
+@{
+    ViewBag.Title = "ObtenerSitiosWeb";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><sub>Lista de webpages a testear:</sub></h2>
+
+<table class="table table-striped table-responsive">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sitio in Model.WebPages) 
+        {
+        <tr>
+            <td>@sitio.Nombre</td>
+            <td>@sitio.URL</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
