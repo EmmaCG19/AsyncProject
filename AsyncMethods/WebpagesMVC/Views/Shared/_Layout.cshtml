@@ -14,7 +14,6 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("C# Asynchronous", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
@@ -30,7 +29,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - @@GitHub</p>
+            <h4>&copy; @DateTime.Now.Year - <a class="btn-link" href="http://github.com/EmmaCG19">@@GitHub account</a></h4>
         </footer>
     </div>
 
