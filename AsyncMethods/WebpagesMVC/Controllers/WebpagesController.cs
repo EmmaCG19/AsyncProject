@@ -15,7 +15,11 @@ namespace WebpagesMVC.Controllers
             WebPageVM model = new WebPageVM();
             ViewBag.Title = "Lista de websites";
 
+<<<<<<< HEAD
             return View(model); 
+=======
+            return View(model);
+>>>>>>> dev
         }
 
         

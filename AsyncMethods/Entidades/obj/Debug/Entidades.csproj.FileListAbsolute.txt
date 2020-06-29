@@ -1,0 +1,6 @@
+C:\Users\emman\source\repos\AsyncProject\AsyncMethods\Entidades\bin\Debug\Entidades.dll
+C:\Users\emman\source\repos\AsyncProject\AsyncMethods\Entidades\bin\Debug\Entidades.pdb
+C:\Users\emman\source\repos\AsyncProject\AsyncMethods\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\emman\source\repos\AsyncProject\AsyncMethods\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\emman\source\repos\AsyncProject\AsyncMethods\Entidades\obj\Debug\Entidades.dll
+C:\Users\emman\source\repos\AsyncProject\AsyncMethods\Entidades\obj\Debug\Entidades.pdb
