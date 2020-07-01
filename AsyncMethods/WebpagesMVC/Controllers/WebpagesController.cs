@@ -36,7 +36,7 @@ namespace WebpagesMVC.Controllers
                 
                 if (cargaAsync != null)
                 {
-                    ViewBag.Resultados = await RunAsync(model.WebPages);
+                    ViewBag.Resultados = await RunAsyncParallel(model.WebPages);
                 }
                 else if (cargaSync != null)
                 {
@@ -70,6 +70,40 @@ namespace WebpagesMVC.Controllers
 
             return sb.ToString();
 
+        }
+
+        /// <summary>
+        /// Realizar de manera asincronica y paralela la descarga de los sitios web
+        /// </summary>
+        /// <param name="websites"></param>
+        /// <returns></returns>
+        private async Task<string> RunAsyncParallel(List<WebPage> websites)
+        {
+            Stopwatch watch = new Stopwatch();
+            StringBuilder sb = new StringBuilder();
+            List<Task<WebPage>> tasks = new List<Task<WebPage>>();
+
+            watch.Start();
+
+            //Se agrega la tarea a realizar en una lista de tareas 
+            foreach (var website in websites)
+            {
+                tasks.Add(Task.Run(() => DownloadWebsite(website)));
+            }
+
+            //Espero que todas las tareas sean realizadas, obtiene los resultados y avanza
+            var results = await Task.WhenAll(tasks);
+
+            //Muestra la informacion y la concatena en el StringBuilder
+            foreach (var page in results)
+            {
+                sb.AppendLine(ReportWebsite(page));
+            }
+
+
+            watch.Stop();
+            sb.AppendLine($"Execution time: {watch.ElapsedMilliseconds} ms");
+            return sb.ToString();
         }
 
 
@@ -118,7 +152,7 @@ namespace WebpagesMVC.Controllers
             }
             catch (WebException)
             {
-                webpage.Data = "No se pudo conectar con el sitio";
+                webpage.Data = String.Empty;
             }
 
             return webpage;
