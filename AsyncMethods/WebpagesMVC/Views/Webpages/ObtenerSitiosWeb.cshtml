@@ -1,25 +1,51 @@
 ﻿@model WebpagesMVC.Models.WebPageVM
 
 @{
-    ViewBag.Title = "ObtenerSitiosWeb";
+    ViewBag.Title = "Obtener Sitios Web";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2><sub>Lista de webpages a testear:</sub></h2>
 
-<table class="table table-striped table-responsive">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var sitio in Model.WebPages) 
-        {
-        <tr>
-            <td><a class="btn-link" href="@sitio.URL">@sitio.Nombre</a></td>
-        </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    <table class="table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sitio in Model.WebPages)
+            {
+                <tr>
+                    <td><a class="btn-link" href="@sitio.URL">@sitio.Nombre</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
+
+<div class="row">
+    @using (Html.BeginForm("ObtenerSitiosWeb", "WebPages", FormMethod.Post))
+    {
+    <div class="col-md-6">
+
+        @if (ViewBag.Resultados is null)
+        {
+            <textarea name="downloadInfo" class="form-control" disabled></textarea>
+        }
+        else
+        {
+            <textarea name="downloadInfo" class="form-control">
+                           @ViewBag.Resultados 
+            </textarea>
+        }
+    </div>
+    <div class="col-md-6">
+        <span><input class="btn btn-primary" name="cargaAsync" type="submit" value="Cargar Async" /></span>
+        <span><input class="btn btn-primary" name="cargaSync" type="submit" value="Cargar Sync" /></span>
+        <span><input class="btn btn-primary" name="Alertar" type="button" value="Alertar" onclick="window.alert('Se puede realizar otra accion mientras se descarga informacion')"/></span>
+    </div>
+    }
+</div>

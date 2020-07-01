@@ -8,7 +8,8 @@ namespace Entidades
 {
     public class WebPage
     {
-        public string Nombre { get; set; }
-        public string URL { get; set; }
+        public string Nombre { get; set; } = "";
+        public string URL { get; set; } = "";
+        public string Data { get; set; } = "";
     }
 }
